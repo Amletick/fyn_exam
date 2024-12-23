@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Recipe Added Successfully - Recipe App{% endblock %}
+
+{% block content %}
+    <h1>Your Recipe Has Been Added!</h1>
+    <p>Thank you for adding a new recipe. You can view it <a href="{% url 'recipe_detail' recipe.id %}">here</a>.</p>
+    <a href="{% url 'home' %}">Go back to the homepage</a>
+{% endblock %}
