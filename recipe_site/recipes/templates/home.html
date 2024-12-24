@@ -9,7 +9,7 @@
         {% for recipe in recipes %}
             <li>
                 <a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a><br>
-                <p>{{ recipe.description|truncatewords:20 }}</p>
+                <p>{{ recipe.description|truncatewords:50 }}</p>
             </li>
         {% endfor %}
     </ul>

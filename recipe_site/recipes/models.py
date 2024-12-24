@@ -26,11 +26,11 @@ class Category(models.Model):
 class RecipeCategory(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='categories')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='recipes')
-    # Дополнительные поля (например, порядок в категории)
-    order = models.PositiveIntegerField(default=0)  # Порядок категории для рецепта
+
+    order = models.PositiveIntegerField(default=0) 
 
     class Meta:
-        unique_together = ('recipe', 'category')  # Уникальность пары рецепта и категории
+        unique_together = ('recipe', 'category')  
 
     def __str__(self):
         return f"{self.recipe.title} - {self.category.title}"

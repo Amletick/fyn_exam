@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from .models import Recipe, Category
+from .models import Recipe, Category,RecipeCategory
 from .forms import RecipeForm
 from django.db.models import Q
 import random
@@ -83,16 +83,6 @@ def delete_recipe(request, recipe_id):
     return render(request, 'confirm_delete_recipe.html', {'recipe': recipe})
 
 
-def search(request):
-    query = request.GET.get('q')
-    if query:
-        recipes = Recipe.objects.filter(
-            Q(title__icontains=query) | Q(description__icontains=query)
-        )
-    else:
-        recipes = Recipe.objects.all()
-    
-    return render(request, 'search_results.html', {'recipes': recipes, 'query': query})
 
 
 def categories(request):
@@ -102,5 +92,5 @@ def categories(request):
 
 def category_recipes(request, category_id):
     category = get_object_or_404(Category, id=category_id)
-    recipes = category.recipes.all()  # Все рецепты, относящиеся к категории
+    recipes = recipes = Recipe.objects.filter(categories__category=category)
     return render(request, 'category_recipes.html', {'category': category, 'recipes': recipes})

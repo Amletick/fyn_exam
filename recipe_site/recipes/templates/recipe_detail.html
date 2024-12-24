@@ -3,7 +3,10 @@
 {% block title %}{{ recipe.title }} - Recipe App{% endblock %}
 
 {% block content %}
+    <li><a href="{% url 'edit_recipe' recipe.id%}">edit_recipe</a></li>
+    <li><a href="{% url 'delete_recipe' recipe.id%}">delete_recipe</a></li>
     <h1>{{ recipe.title }}</h1>
+    
     <p><strong>Cooking Time:</strong> {{ recipe.cooking_time }} minutes</p>
     <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
     <h3>Description</h3>
