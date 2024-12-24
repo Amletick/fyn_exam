@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from .models import Recipe, Category,RecipeCategory
+from .models import Recipe, Category
 from .forms import RecipeForm
 from django.db.models import Q
 import random
@@ -92,5 +92,5 @@ def categories(request):
 
 def category_recipes(request, category_id):
     category = get_object_or_404(Category, id=category_id)
-    recipes = recipes = Recipe.objects.filter(categories__category=category)
+    recipes = Recipe.objects.filter(categories__category=category)
     return render(request, 'category_recipes.html', {'category': category, 'recipes': recipes})
