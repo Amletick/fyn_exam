@@ -14,7 +14,9 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+# Media files
+MEDIA_URL = '/media/'  # URL для доступа к медиа-файлам
+MEDIA_ROOT = BASE_DIR / 'media'  # Локальный путь для хранения медиа-файлов
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
